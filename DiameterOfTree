@@ -1,0 +1,46 @@
+class Solution {
+public:
+
+int height(TreeNode* root){
+      // Base Case:
+      if(root == NULL){
+          return 0;
+      }
+      int left = height(root->left);
+      int right = height(root->right);
+      int maxHeight = max(left, right);
+      int ans = maxHeight + 1;
+      return ans;
+  }
+    int diameterOfBinaryTree(TreeNode* root) {
+         
+
+  // Function to return the diameter of a Binary Tree.
+
+      // Base Case:
+      if(root == NULL){
+          return 0;
+      }
+      
+      // Compute the height of left and right subtrees just once
+      int leftHeight = height(root->left);
+      int rightHeight = height(root->right);
+
+      // Part A: Diameter in the left subtree
+      int leftDiameter = diameterOfBinaryTree(root->left);
+
+      // Part B: Diameter in the right subtree
+      int rightDiameter = diameterOfBinaryTree(root->right);
+
+      // Part C: Diameter through the root (left height + right height)
+      int combinationDiameter = leftHeight + rightHeight;
+
+      // Maximum of the three parts
+      int maxDiameter = max(leftDiameter, max(rightDiameter, combinationDiameter));
+
+      return maxDiameter;
+  
+    }
+    
+
+};
