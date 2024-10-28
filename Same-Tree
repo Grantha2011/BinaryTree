@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        // If both nodes are null, they are the same
+        if (p == nullptr && q == nullptr) {
+            return true;
+        }
+        // If only one of the nodes is null, trees are not the same
+        if (p == nullptr || q == nullptr) {
+            return false;
+        }
+        // If the values are different, trees are not the same
+        if (p->val != q->val) {
+            return false;
+        }
+        // Recursively check left and right subtrees
+        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+    }
+};
