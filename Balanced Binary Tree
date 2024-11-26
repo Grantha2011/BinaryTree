@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int height(TreeNode* root) {
+        // Base case: an empty tree has a height of 0
+        if (root == NULL) {
+            return 0;
+        }
+        
+        int left = height(root->left);
+        int right = height(root->right);
+        
+        // Return the height of the current tree
+        return max(left, right) + 1;
+    }
+
+    bool isBalanced(TreeNode* root) {
+        // Base case: an empty tree is balanced
+        if (root == NULL) {
+            return true;
+        }
+        
+        // Check the height difference at the current node
+        int leftHeight = height(root->left);
+        int rightHeight = height(root->right);
+        
+        // Ensure both the current node is balanced and the subtrees are balanced
+        if (abs(leftHeight - rightHeight) > 1) {
+            return false;
+        }
+        
+        // Recursively check the left and right subtrees
+        return isBalanced(root->left) && isBalanced(root->right);
+    }
+};
