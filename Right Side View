@@ -5,6 +5,7 @@ void solve(TreeNode *root,int level,vector<int>&ans){
     if(root==NULL){
         return;
     }
+//logic
     if(level==ans.size()){
         ans.push_back(root->val);
     }
